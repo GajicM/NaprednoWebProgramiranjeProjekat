@@ -1,0 +1,83 @@
+
+<div style="text-align: center;">
+    <br>
+    <h1>Search Your Vacuums</h1>
+  </div >
+    <div name="search" style="text-align: center;">
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput name="name" [required]="false" [(ngModel)]="searchObj.name" placeholder="">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+               
+                  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                
+               
+                  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                
+              </mat-form-field>
+              <div style="display: flex;  justify-content: center; align-items: center; text-align: center;">
+                <mat-checkbox *ngFor="let status of statusMap | keyvalue" class="example-margin"
+                          (change)="toggleStatus(status.key)" [checked]="status.value">
+              {{ status.key }}
+            </mat-checkbox>
+            </div>
+            <button mat-raised-button (click)="onSubmit()">Filter</button>
+         </div>
+         <br>
+  <table mat-table [dataSource]="vacuums" class="mat-elevation-z8">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column ['id', 'name', 'email',"permissions"];-->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+            <!-- Weight Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> status </th>
+            <td mat-cell *matCellDef="let element" > {{element.status}} </td>
+        </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element" > {{element.active}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> createdAt</th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt |date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions" > <!-- *ngIf="permission=='candelete'" decodedToken.permissions.contains('can_update_users') -->
+          <th mat-header-cell *matHeaderCellDef > Actions </th>
+          <td mat-cell *matCellDef="let element" > 
+            <button mat-raised-button color="primary" *ngIf="deleteVacuumPermission" (click)="deleteVacuum(element.id)">Delete</button> <a> </a>
+            <button mat-raised-button color="primary" [routerLink]="'../'+element.id">More</button> <a> </a>
+     <!--      <button mat-raised-button color="primary" *ngIf="deletePermission" (click)="deleteUser(element)">Delete</button> <a> </a>
+            <button mat-raised-button color="primary" (click)="updateUser(element)" *ngIf="updatePermission" >Update</button>--> 
+          </td>
+  
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>

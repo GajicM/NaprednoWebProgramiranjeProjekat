@@ -1,0 +1,44 @@
+
+
+<div style="text-align: center;">
+    <br>
+    <h1> Update User</h1>
+    <div>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput [required]="true" [(ngModel)]="user.firstName" placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput  [required]="true"  [(ngModel)]="user.lastName" placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput  [required]="true"  [(ngModel)]="user.email" placeholder="Placeholder">
+          <div style="max-height: 6px;font-size: 12px;">
+            <mat-error *ngIf="!validateEmail()">Invalid email</mat-error> 
+           </div>
+          </mat-form-field>
+        
+          
+    </div>
+   <!--NIJE POTREBAN PASSWORD ZA UPDATEOVANJE  <div>  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput  [required]="true"  [(ngModel)]="user.password" type="password" placeholder="Placeholder">
+          </mat-form-field>
+    </div> -->
+    <div style="display: flex;  justify-content: center; align-items: center; text-align: center;">
+        <mat-checkbox *ngFor="let permission of permissionMap | keyvalue" class="example-margin"
+                  (change)="togglePermission(permission.key)" [checked]="permission.value">
+      {{ permission.key }}
+    </mat-checkbox>
+    </div>
+    
+    <br>
+   <button mat-raised-button color="primary" (click)="onSubmit()">Update User</button>
+</div>

@@ -1,0 +1,37 @@
+
+a {
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    color: #3366cc; /* Change the color on hover */
+    text-decoration: underline;
+  }
+  a {
+    color: #3366cc; /* Link color */
+  }
+  
+  a:hover {
+    color: #004080; /* Change the color on hover */
+  }
+  a {
+    cursor: pointer;
+  }
+  a {
+    color: #3366cc;
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  a:hover {
+    color: #004080; /* Change the color on hover */
+  }
+  a {
+    color: #3366cc;
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  a:hover {
+    color: #004080; /* Change the color on hover */
+  }
+  
+  

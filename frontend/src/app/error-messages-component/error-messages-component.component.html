@@ -1,0 +1,45 @@
+<div>
+<!---
+    private Long id;
+    private String message;
+    private long vacuumId;
+    private String operation;
+    private LocalDateTime dateTime;
+    private long userId;
+-->
+    <table mat-table [dataSource]="errors" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+            <th mat-header-cell *matHeaderCellDef> Message </th>
+            <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vacuumId">
+            <th mat-header-cell *matHeaderCellDef> Vacuum ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.vacuumId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operation">
+            <th mat-header-cell *matHeaderCellDef> Operation </th>
+            <td mat-cell *matCellDef="let element"> {{element.operation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateTime">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="userId">
+            <th mat-header-cell *matHeaderCellDef> User ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+</div>

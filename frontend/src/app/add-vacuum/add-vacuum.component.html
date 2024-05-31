@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+    <br>
+    <h1> New Vacuum</h1>
+
+    <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Vacuum Name</mat-label>
+          <input matInput  [required]="true"  [(ngModel)]="name" placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+    <br>
+   <button mat-raised-button color="primary" (click)="onSubmit()">Create Vacuum</button>
+</div>

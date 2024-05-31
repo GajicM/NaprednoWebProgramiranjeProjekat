@@ -1,0 +1,26 @@
+<!-- Toolbar -->
+<mat-toolbar class="toolbar" role="banner" > 
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+    <a  (click)="gotoUsers()" style="color: #ffff; padding-right: 2.5%; ; " >Users</a>
+    <a [routerLink]="'/createuser'" style="color: #ffff;; padding-right: 2.5%; " *ngIf="writePermission">New User</a>
+    
+    <a [routerLink]="'/vacuum/search'" style="color: #ffff;padding-right: 2.5% ;" *ngIf="searchVacuumPermission">Search Vacuums</a>
+    <a [routerLink]="'/vacuum/add'" style="color: #ffff;; padding-right: 2.5%; " *ngIf="writeVacuumPermission">New Vacuum</a>
+    <a [routerLink]="'/errors'" style="color: #ffff;padding-right: 2.5%;">Errors</a>
+
+    <a [routerLink]="'/login'"   style="color: #ffff; position: absolute; right: 2.5%;" *ngIf="token=='' || token==undefined || token==null">Login</a>
+   
+    <a [routerLink]="'/'" style="color: #ffff; position: absolute; right: 2.5%; text-align: right;"*ngIf="token!='' && token!=undefined && token!=null" (click)="logout()">Logout</a>
+    <div class="spacer"></div>
+   
+</mat-toolbar>
+
+<div class="content" role="main">
+
+</div>
+
+<router-outlet></router-outlet>

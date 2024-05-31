@@ -1,0 +1,53 @@
+
+<div style="text-align: center;">
+<h1> Vacuum Details and Actions for {{vacuum.name}}</h1>
+<br>
+<a> ID: {{vacuum.id}}</a>
+<br>
+<a> Name: {{vacuum.name}}</a>
+<br>
+<a > Status: {{vacuum.status}}</a>
+<br>
+<a> Active: {{vacuum.active}}</a>
+<br>
+<a> Created At: {{vacuum.createdAt |date}}</a>
+<br>
+<div class="row">
+    <div class="column">
+        <a>Start actions now</a>
+        <br>
+        <button mat-raised-button color="primary" *ngIf="startVacuumPermission" (click)="startVacuum()">Start Vacuum</button> 
+        <br>
+        <br>
+        
+        <button mat-raised-button color="primary" *ngIf="stopVacuumPermission" (click)="stopVacuum()">Stop Vacuum</button> 
+        <br>
+       
+        
+        <br>
+        <button mat-raised-button color="primary" *ngIf="dischargeVacuumPermission" (click)="dischargeVacuum()">Discharge Vacuum</button> 
+    </div>
+   
+    <div class="column">
+        <a>Schedule actions</a>
+        <br>
+        <mat-label>Scheduling time</mat-label>
+        <input matInput type="time" [required]="false" [(ngModel)]="startTime" placeholder="{{date}}">
+        <br>
+        <button mat-raised-button color="primary" *ngIf="startVacuumPermission" (click)="startVacuumAsync()">Start Vacuum</button> 
+        <br>
+        <br>
+        
+        <button mat-raised-button color="primary" *ngIf="stopVacuumPermission" (click)="stopVacuumAsync()">Stop Vacuum</button> 
+        <br>
+       
+        
+        <br>
+        <button mat-raised-button color="primary" *ngIf="dischargeVacuumPermission" (click)="dischargeVacuumAsync()">Discharge Vacuum</button> 
+    </div>
+</div>
+
+
+
+
+</div>
